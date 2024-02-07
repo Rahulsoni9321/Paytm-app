@@ -1,9 +1,11 @@
+const dotenv = require('dotenv')
 const express = require("express");
 const rootRouter=require("./routes/index")
 const bodyParser=require("body-parser")
 const jwt=require("jsonwebtoken")
 const app=express();
-const Port=3000;
+require("dotenv").config(); 
+const Port=process.env.Port;
 app.use(bodyParser.json());
 
 const cors=require("cors");
