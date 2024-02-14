@@ -10,6 +10,7 @@ router.post("/signup", async (req, res) => {
   const userpayload = req.body;
   const uservalidation = signupschema.safeParse(userpayload);
   if (uservalidation.success) {
+   
     const userfinding = await user.findOne({
       username: userpayload.username,
     });
@@ -28,7 +29,7 @@ router.post("/signup", async (req, res) => {
       const userid = newuser._id;
       const useraccount = await account.create({
         userId: userid,
-        balance: Math.ceil(Math.random() * 10000),
+        balance: Math.ceil(Math.random() * 1000000),
       });
       const token = jwt.sign({ userid: newuser._id }, JWT_secret);
 
